@@ -10,6 +10,7 @@
                     type="text" 
                     value.bind="todoName"
                     required
+                    placeholder="Enter Todo's Name"
                 />
             </div>
 
@@ -19,6 +20,7 @@
                     id="des"
                     type="text"
                     value.bind="todoDescription"
+                    placeholder="Enter Todo's Description"
                 />
             </div>
 
@@ -35,6 +37,7 @@
         <input 
             type="submit" 
             value="Add Todo"
+            id="submit"
         />
     </form>
 
@@ -53,8 +56,8 @@
                 </section>
                 
                 <section class="todo-btns">
-                    <button click.trigger="finishTodo(todo)">Finish</button>
-                    <button click.trigger="removeTodo(todo, 'todos')">Remove</button>
+                    <button click.trigger="finishTodo(todo)" class="finish">Finish</button>
+                    <button click.trigger="removeTodo(todo, 'todos')" class="remove">Remove</button>
                 </section>
             </li>
         </ul>
@@ -75,7 +78,8 @@
                 </section>
                 
                 <section class="todo-btns">
-                    <button click.trigger="removeTodo(todo, 'finishedTodos')">Remove</button>
+                    <button click.trigger="removeTodo(todo, 'finishedTodos')" class="remove">Remove</button>
+                    <button click.trigger="recoverTodo(todo)" class="recover">Recover</button>
                 </section>
             </li>
         </ul>
@@ -96,8 +100,8 @@
                 </section>
                 
                 <section class="todo-btns">
-                    <button click.trigger="finishTodo(todo, 'overdueTodos')">Finish</button>
-                    <button click.trigger="removeTodo(todo, 'overdueTodos')">Remove</button>
+                    <button click.trigger="finishTodo(todo, 'overdueTodos')" class="finish">Finish</button>
+                    <button click.trigger="removeTodo(todo, 'overdueTodos')" class="remove">Remove</button>
                 </section>
             </li>
         </ul>

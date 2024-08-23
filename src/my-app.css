@@ -1,4 +1,15 @@
+:root {
+  --primary-blue: #00A5FF;
+  --secondary-blue: #2A4DC5;
+  --green: #009175;
+  --red: #B83C72;
+  --white: #F5F4F2;
+  --charcoal: #303D59;
+  --gray: #80858E;
+}
+
 body {
+  font-family: Poppins, sans-serif;
   display: flex;
   justify-content: center;
   min-height: 100vh;
@@ -26,6 +37,30 @@ form section {
   flex-direction: row;
   gap: 4rem;
   margin-bottom: 2rem;
+}
+
+label {
+  color: var(--charcoal);
+}
+
+input {
+  border-color: var(--charcoal);
+  border-radius: 32px;
+  padding: 0.5rem;
+}
+
+#submit {
+  padding: 1rem 2rem;
+  border-radius: 32px;
+  border: none;
+  background-color: var(--primary-blue);
+  color: var(--white);
+  font-size: 120%;
+}
+
+#submit:hover {
+  background-color: var(--secondary-blue);
+  transition: 0.5s ease-in-out;
 }
 
 ul {
@@ -74,5 +109,23 @@ ul {
 }
 
 .todo-btns button {
-  width: 20%;
+  width: 25%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 16px;
+}
+
+.finish {
+  color: var(--white);
+  background-color: var(--green);
+}
+
+.remove {
+  color: var(--white);
+  background-color: var(--red); 
+}
+
+.recover {
+  color: var(--white);
+  background-color: var(--primary-blue);
 }

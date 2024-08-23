@@ -13,7 +13,7 @@ export class MyApp {
     this.h1 = "My Todo List";
     this.todos = [
       new Todo("Buy groceries", "Buy eggs, milk, butter", new Date()),
-      new Todo("Complete homework", "Finish DSA assignment", new Date(new Date())),
+      new Todo("Complete homework", "Finish DSA assignment", new Date()),
       new Todo("Go to the gym", "Leg day", new Date(new Date().getTime() + 86400000))
     ];
     this.todoName = "";
@@ -48,7 +48,7 @@ export class MyApp {
     } else {
       this.todos = this.todos.filter(t => t !== todo);
     }
-    
+
     this.finishedTodos.push(todo);
   }
 
@@ -82,6 +82,11 @@ export class MyApp {
         console.error('Invalid list specified for removal');
     }
   }  
+
+  recoverTodo(todo: Todo): void {
+    this.todos.push(todo);
+    this.finishedTodos = this.finishedTodos.filter(t => t !== todo);
+  }
 
   formatDate(date: Date): string {
     return new Intl.DateTimeFormat('en-US', {
