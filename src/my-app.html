@@ -1,1 +1,105 @@
-<div class="message">${message}</div>
+<main>
+    <h1>${h1}</h1>
+
+    <form submit.trigger="addTodo()">
+        <section>
+            <div>
+                <label for="name">Name</label>
+                <input
+                    id="name"
+                    type="text" 
+                    value.bind="todoName"
+                    required
+                />
+            </div>
+
+            <div>
+                <label for="des">Description</label>
+                <input
+                    id="des"
+                    type="text"
+                    value.bind="todoDescription"
+                />
+            </div>
+
+            <div>
+                <label for="time">Time</label>
+                <input
+                    id="time"
+                    type="datetime-local" 
+                    value.bind="todoTime"
+                />
+            </div>
+        </section>
+
+        <input 
+            type="submit" 
+            value="Add Todo"
+        />
+    </form>
+
+    <article>
+        <h2>Todo List</h2>
+        <hr />
+        <ul>
+            <li repeat.for="todo of todos" class="todo-item">
+                <section class="todo-info">
+                    <div class="todo-header">
+                        <h3>${todo.name}:</h3>
+                        <p>${formatDate(todo.time)}</p>
+                    </div>
+
+                    <p class="todo-description">${todo.description}</p>
+                </section>
+                
+                <section class="todo-btns">
+                    <button click.trigger="finishTodo(todo)">Finish</button>
+                    <button click.trigger="removeTodo(todo, 'todos')">Remove</button>
+                </section>
+            </li>
+        </ul>
+    </article>
+
+    <article>
+        <h2>Finished Tasks</h2>
+        <hr />
+        <ul>
+            <li repeat.for="todo of finishedTodos" class="todo-item">
+                <section class="todo-info">
+                    <div class="todo-header">
+                        <h3>${todo.name}:</h3>
+                        <p>${formatDate(todo.time)}</p>
+                    </div>
+
+                    <p class="todo-description">${todo.description}</p>
+                </section>
+                
+                <section class="todo-btns">
+                    <button click.trigger="removeTodo(todo, 'finishedTodos')">Remove</button>
+                </section>
+            </li>
+        </ul>
+    </article>
+
+    <article>
+        <h2>Overdue Tasks</h2>
+        <hr />
+        <ul>
+            <li repeat.for="todo of overdueTodos" class="todo-item">
+                <section class="todo-info">
+                    <div class="todo-header">
+                        <h3>${todo.name}:</h3>
+                        <p>${formatDate(todo.time)}</p>
+                    </div>
+
+                    <p class="todo-description">${todo.description}</p>
+                </section>
+                
+                <section class="todo-btns">
+                    <button click.trigger="finishTodo(todo, 'overdueTodos')">Finish</button>
+                    <button click.trigger="removeTodo(todo, 'overdueTodos')">Remove</button>
+                </section>
+            </li>
+        </ul>
+    </article>
+</main>
