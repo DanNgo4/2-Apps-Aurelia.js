@@ -1,4 +1,4 @@
-# todoapp
+# `Todo-App-Aurelia.js`
 
 This project is bootstrapped by [aurelia/new](https://github.com/aurelia/new).
 
