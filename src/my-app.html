@@ -11,6 +11,7 @@
                     value.bind="todoName"
                     required
                     placeholder="Enter Todo's Name"
+                    class="input-field"
                 />
             </div>
 
@@ -21,6 +22,7 @@
                     type="text"
                     value.bind="todoDescription"
                     placeholder="Enter Todo's Description"
+                    class="input-field"
                 />
             </div>
 
@@ -30,6 +32,8 @@
                     id="time"
                     type="datetime-local" 
                     value.bind="todoTime"
+                    required
+                    class="input-field"
                 />
             </div>
         </section>
@@ -45,7 +49,10 @@
         <h2>Todo List</h2>
         <hr />
         <ul>
-            <li repeat.for="todo of todos" class="todo-item">
+            <li 
+                repeat.for="todo of paginatedTodos" 
+                class="todo-item"
+            >
                 <section class="todo-info">
                     <div class="todo-header">
                         <h3>${todo.name}:</h3>
@@ -56,18 +63,67 @@
                 </section>
                 
                 <section class="todo-btns">
-                    <button click.trigger="finishTodo(todo)" class="finish">Finish</button>
-                    <button click.trigger="removeTodo(todo, 'todos')" class="remove">Remove</button>
+                    <button 
+                        click.trigger="finishTodo(todo)" 
+                        class="finish"
+                    >
+                        Finish
+                    </button>
+
+                    <button 
+                        click.trigger="removeTodo(todo, 'todos')" 
+                        class="remove"
+                    >
+                        Remove
+                    </button>
                 </section>
             </li>
         </ul>
+
+        <section class="pagination">
+            <button 
+                click.trigger="previousPage()" 
+                disabled.bind="currentPage === 1"
+            >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <p id="prev">Previous</p>
+            </button>
+
+            <div class="pagination-links">
+                <template repeat.for="page of visiblePages">
+                  <a if.bind="page !== null"
+                     click.trigger="goToPage(page)" 
+                     class.bind="page === currentPage ? 'active' : ''">
+                     ${page}
+                  </a>
+                  <span if.bind="page === null">...</span>
+                </template>
+              </div>
+
+            <button 
+                click.trigger="nextPage()" 
+                disabled.bind="currentPage * itemsPerPage >= todos.length"
+            >
+                <p id="next">Next</p>
+                
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </section>
     </article>
 
     <article>
         <h2>Finished Tasks</h2>
         <hr />
         <ul>
-            <li repeat.for="todo of finishedTodos" class="todo-item">
+            <li 
+                repeat.for="todo of finishedTodos" 
+                class="todo-item"
+            >
                 <section class="todo-info">
                     <div class="todo-header">
                         <h3>${todo.name}:</h3>
@@ -78,8 +134,19 @@
                 </section>
                 
                 <section class="todo-btns">
-                    <button click.trigger="removeTodo(todo, 'finishedTodos')" class="remove">Remove</button>
-                    <button click.trigger="recoverTodo(todo)" class="recover">Recover</button>
+                    <button 
+                        click.trigger="removeTodo(todo, 'finishedTodos')" 
+                        class="remove"
+                    >
+                        Remove
+                    </button>
+
+                    <button 
+                        click.trigger="recoverTodo(todo)" 
+                        class="recover"
+                    >
+                        Recover
+                    </button>
                 </section>
             </li>
         </ul>
@@ -89,7 +156,10 @@
         <h2>Overdue Tasks</h2>
         <hr />
         <ul>
-            <li repeat.for="todo of overdueTodos" class="todo-item">
+            <li 
+                repeat.for="todo of overdueTodos" 
+                class="todo-item"
+            >
                 <section class="todo-info">
                     <div class="todo-header">
                         <h3>${todo.name}:</h3>
@@ -100,8 +170,19 @@
                 </section>
                 
                 <section class="todo-btns">
-                    <button click.trigger="finishTodo(todo, 'overdueTodos')" class="finish">Finish</button>
-                    <button click.trigger="removeTodo(todo, 'overdueTodos')" class="remove">Remove</button>
+                    <button 
+                        click.trigger="finishTodo(todo, 'overdueTodos')" 
+                        class="finish"
+                    >
+                        Finish
+                    </button>
+
+                    <button 
+                        click.trigger="removeTodo(todo, 'overdueTodos')" 
+                        class="remove"
+                    >
+                        Remove
+                    </button>
                 </section>
             </li>
         </ul>

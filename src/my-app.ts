@@ -1,4 +1,6 @@
-import { Todo } from "./interface/todo";
+import { Todo } from "./class/todo";
+
+import { todoList } from "./assets/todo-list";
 
 export class MyApp {
   h1: string;
@@ -9,18 +11,20 @@ export class MyApp {
   finishedTodos: Array<Todo>;
   overdueTodos: Array<Todo>;
 
+  currentPage: number;
+  itemsPerPage: number;
+
   constructor() {
     this.h1 = "My Todo List";
-    this.todos = [
-      new Todo("Buy groceries", "Buy eggs, milk, butter", new Date()),
-      new Todo("Complete homework", "Finish DSA assignment", new Date()),
-      new Todo("Go to the gym", "Leg day", new Date(new Date().getTime() + 86400000))
-    ];
+    this.todos = todoList;
     this.todoName = "";
     this.todoDescription = "";
     this.todoTime = "";
     this.finishedTodos = [];
     this.overdueTodos = [];
+
+    this.currentPage = 1;
+    this.itemsPerPage = 4;
 
     setInterval(() => this.checkOverdueTasks(), 1000);
   }
@@ -97,5 +101,66 @@ export class MyApp {
       minute: '2-digit',
       hour12: false
     }).format(date);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.todos.length / this.itemsPerPage);
+  }
+
+  get paginatedTodos(): Array<Todo> {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.todos.slice(startIndex, endIndex);
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
+
+  get visiblePages(): number[] {
+    const pages = [];
+    const prevPage = Math.max(1, this.currentPage - 1);
+    const nextPage = Math.min(this.totalPages, this.currentPage + 1);
+
+    // First page always visible
+    if (prevPage > 2) {
+      pages.push(1);
+    }
+
+    // Add ... as gap on the left
+    if (prevPage > 2) {
+      pages.push(null); 
+    }
+
+    // Add previous, current and next pages
+    for (let i = prevPage; i <= nextPage; i++) {
+      pages.push(i);
+    }
+
+    // Add ... as gap on the right
+    if (nextPage < this.totalPages - 1) {
+      pages.push(null); 
+    }
+
+    // Last page always visible
+    if (nextPage < this.totalPages) {
+      pages.push(this.totalPages);
+    }
+
+    return pages;
   }
 }

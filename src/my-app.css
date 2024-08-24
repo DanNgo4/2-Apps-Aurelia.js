@@ -1,11 +1,15 @@
 :root {
   --primary-blue: #00A5FF;
   --secondary-blue: #2A4DC5;
-  --green: #009175;
-  --red: #B83C72;
+  --light-blue: #E9F7FF;
+  --primary-green: #009175;
+  --light-green: #C8E9DD;
+  --primary-red: #B83C72;
+  --light-red: #F3D0DA;
   --white: #F5F4F2;
   --charcoal: #303D59;
   --gray: #80858E;
+  --light-gray: #F5F7FA;
 }
 
 body {
@@ -43,10 +47,10 @@ label {
   color: var(--charcoal);
 }
 
-input {
-  border-color: var(--charcoal);
+.input-field {
+  border: 2px solid var(--gray);
   border-radius: 32px;
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
 
 #submit {
@@ -63,8 +67,11 @@ input {
   transition: 0.5s ease-in-out;
 }
 
+h2 {
+  margin-top: 4rem;
+}
+
 ul {
-  margin-bottom: 4rem;
   list-style-type: none;
 }
 
@@ -111,21 +118,96 @@ ul {
 .todo-btns button {
   width: 25%;
   padding: 0.5rem;
-  border: none;
   border-radius: 16px;
+  border: 2px solid;
+}
+
+.todo-btns button:hover {
+  color: var(--white);
+  transition: 0.5s;
 }
 
 .finish {
-  color: var(--white);
-  background-color: var(--green);
+  color: var(--primary-green);
+  background-color: var(--light-green);
+}
+
+.finish:hover {
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
 }
 
 .remove {
-  color: var(--white);
-  background-color: var(--red); 
+  color: var(--primary-red);
+  background-color: var(--light-red);
+}
+
+.remove:hover {
+  background-color: var(--primary-red);
+  border-color: var(--primary-red);
 }
 
 .recover {
-  color: var(--white);
+  color: var(--primary-blue);
+  background-color: var(--light-blue);
+}
+
+.recover:hover {
+  background-color: var(--primary-blue); 
+  border-color: var(--primary-blue);
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.pagination-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pagination-links a {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--charcoal);
+  text-decoration: none;
+  color: var(--charcoal);
+  cursor: pointer;
+}
+
+.pagination-links a.active {
   background-color: var(--primary-blue);
+  color: var(--white);
+}
+
+.pagination-links a:hover:not(.active) {
+  background-color: var(--light-blue);
+}
+
+.pagination-links span {
+  padding: 1rem;
+}
+
+.pagination button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 32px;
+  border: 2px solid;
+  color: var(--primary-blue);
+  background-color: var(--light-blue);
+  cursor: pointer;
+  width: 6.5rem;
+}
+
+#prev {
+  margin-right: 0.55rem;
+}
+
+#next {
+  margin-left: 0.75rem;
 }
