@@ -1,10 +1,10 @@
 main.todo-app {
-    width: 80%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
   
 .todo-app h1 {
     text-align: center;
