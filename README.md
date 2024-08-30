@@ -1,4 +1,4 @@
-# `Todo-App-Aurelia.js`
+# `2-Apps-Aurelia.js`
 
 This project is bootstrapped by [aurelia/new](https://github.com/aurelia/new).
 
