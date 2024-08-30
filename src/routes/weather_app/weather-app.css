@@ -53,14 +53,10 @@ main.weather-app {
     border-radius: 36px;
 }
 
-.weather-app img#weather-icon {
-    display: none;
-}
-
-.weather-app #current-weather h2,
-.weather-app #current-weather h3,
+.weather-app #weather-h2,
+.weather-app #weather-h3,
 .weather-app #current-weather p {
-    margin: 0.5rem 0
+    margin: 0.5rem 0;
 }
 
 .weather-app #hourly-forecast {

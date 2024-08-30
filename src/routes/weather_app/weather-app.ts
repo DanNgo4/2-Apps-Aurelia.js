@@ -13,6 +13,31 @@ export class WeatherApp {
         this.cityName = "";
         this.temp = "";
         this.weatherInfo = "";
+    
+        // initialise app by displaying current user's location's weather
+        this.getUserLocation();
+    }
+
+    getUserLocation(): void {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    
+                    // fetch weather by latitude and longtitude
+                    this.fetchWeather(
+                        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.key}`, 
+                        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${this.key}`);
+                },
+                err => {
+                    console.error("Error retrieving location", err);
+                    alert("Unable to retrieve your location. Please enter a city name manually.");
+                }
+            );
+        } else {
+            alert("Geolocation is not supported by this browser. Please enter a city name manually.");
+        }
     }
 
     getWeather(): void {
@@ -21,10 +46,14 @@ export class WeatherApp {
             return;
         }
 
-        const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.key}`;
+        this.fetchWeather(
+            `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.key}`, 
+            `https://api.openweathermap.org/data/2.5/forecast?q=${this.city}&appid=${this.key}`);
 
-        const forecastWeatherAPI = `https://api.openweathermap.org/data/2.5/forecast?q=${this.city}&appid=${this.key}`;
+        this.city = "";
+    }
 
+    fetchWeather(currentWeatherAPI, forecastWeatherAPI): void {
         fetch(currentWeatherAPI)
             .then(res => res.json())
             .then(data => {
@@ -37,56 +66,64 @@ export class WeatherApp {
         fetch(forecastWeatherAPI)
             .then(res => res.json())
             .then(data => {
-                if (data.cod === "404") return;
-                this.displayHourlyForecast(data.list);
+                this.displayHourlyForecast(data);
             })
             .catch(err => {
                 console.error("Error fetching forecast weather data", err);
             });
-
-        this.city = "";
     }
 
     displayWeather(data): void {
         const weatherIcon = document.getElementById("weather-icon") as HTMLImageElement;
-        document.getElementById("current-weather").style.display = "flex";
+        const weatherH2 = document.getElementById("weather-h2");
+        const weatherH3 = document.getElementById("weather-h3");
 
         if (data.cod === "404") {
+            weatherIcon.style.display = "none";
+            weatherH2.style.display = "none";
+            weatherH3.style.display = "none";
             this.weatherInfo = data.message;
-            weatherIcon.src = `<p>${data.message}</p>`;
         } else {
+            document.getElementById("current-weather").style.display = "flex";
             const des = data.weather[0].description;
 
             weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
             weatherIcon.alt = des;
-            weatherIcon.style.display = "block";
-
             this.cityName = data.name;
             this.temp = `${Math.round(data.main.temp - 273.15)}°C`;
-            this.weatherInfo = data.weather[0].description;
+            this.weatherInfo = des;
+
+            weatherIcon.style.display = "block";
+            weatherH2.style.display = "block";
+            weatherH3.style.display = "block";
         }
     }
 
-    displayHourlyForecast(list): void {
+    displayHourlyForecast(data): void {
         const hourlyForecastSection = document.getElementById("hourly-forecast");
         hourlyForecastSection.innerHTML = "";
-        hourlyForecastSection.style.display = "flex";
 
-        const next24Hours = list.slice(0, 16);
+        if (data.cod === "404") {
+            return;
+        } else {
+            hourlyForecastSection.style.display = "flex";
 
-        next24Hours.forEach(item => {
-            const hourlyItemHTML = `
-                <div>
-                    <p>${(new Date(item.dt * 1000)).getHours()}:00</p>
-                    <img 
-                        src="${`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}" 
-                        alt="Hourly Weather Icon"
-                    />
-                    <p>${Math.round(item.main.temp - 273.15)}°C</p>
-                </div>
-            `;
+            const next24Hours = data.list.slice(0, 16);
 
-            hourlyForecastSection.innerHTML += hourlyItemHTML; 
-        });
+            next24Hours.forEach(item => {
+                const hourlyItemHTML = `
+                    <div>
+                        <p>${(new Date(item.dt * 1000)).getHours()}:00</p>
+                        <img 
+                            src="${`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}" 
+                            alt="Hourly Weather Icon"
+                        />
+                        <p>${Math.round(item.main.temp - 273.15)}°C</p>
+                    </div>
+                `;
+
+                hourlyForecastSection.innerHTML += hourlyItemHTML; 
+            });
+        }
     }
 }
