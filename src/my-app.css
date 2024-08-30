@@ -53,3 +53,22 @@ nav ul li a:hover {
 nav ul li a.active {
   color: var(--primary-blue);
 }
+
+.input-field {
+  border: 2px solid var(--gray);
+  border-radius: 32px;
+  padding: 0.75rem;
+}
+
+.submit {
+  border-radius: 32px;
+  border: none;
+  background-color: var(--primary-blue);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: var(--secondary-blue);
+  transition: 0.5s ease-in-out;
+}

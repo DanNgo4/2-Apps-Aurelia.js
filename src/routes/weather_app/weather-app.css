@@ -1,0 +1,78 @@
+main.weather-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} 
+
+.weather-app article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-blue);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 16px;
+    padding: 0.75rem 4rem;
+}
+
+.weather-app form {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(0 ,1fr));
+    gap: 0.5rem;
+    justify-items: center;
+}
+
+.weather-app label {
+    font-size: 180%;
+    font-weight: 500;
+    align-self: center;
+}
+
+.weather-app .input-field {
+    height: 0.75rem;
+    align-self: center;
+}
+
+.weather-app .submit {
+    padding: 1rem 1.25rem;
+    font-size: 100%;
+}
+
+.weather-app #current-weather {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.weather-app img {
+    background-color: var(--primary-blue);
+    border-radius: 36px;
+}
+
+.weather-app img#weather-icon {
+    display: none;
+}
+
+.weather-app #current-weather h2,
+.weather-app #current-weather h3,
+.weather-app #current-weather p {
+    margin: 0.5rem 0
+}
+
+.weather-app #hourly-forecast {
+    display: none;
+    gap: 1.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: 0.5rem 1rem;
+    max-width: 40rem;
+}
+
+.weather-app #hourly-forecast div {
+    min-width: 5rem;
+    text-align: center;
+}

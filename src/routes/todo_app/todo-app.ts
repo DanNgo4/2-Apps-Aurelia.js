@@ -26,6 +26,7 @@ export class TodoApp {
     this.currentPage = 1;
     this.itemsPerPage = 4;
 
+    // check overdue tasks every second
     setInterval(() => this.checkOverdueTasks(), 1000);
   }
 

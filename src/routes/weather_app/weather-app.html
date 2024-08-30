@@ -1,3 +1,35 @@
 <main class="weather-app">
-    <h1>Weather</h1>
+    <h1>${h1}</h1>
+
+    <article>
+        <form submit.trigger="getWeather()">
+            <label for="city">City name</label>
+            <input 
+                id="city"
+                type="text"
+                value.bind="city"
+                required
+                placeholder="Enter a city name"
+                class="input-field"
+            />
+
+            <input
+                type="submit"
+                value="Enter"
+                class="submit"
+            />
+        </form>
+
+        <section id="current-weather">
+            <img id="weather-icon" alt="Weather Image" />
+
+            <h2>${cityName}</h2>
+
+            <h3>${temp}</h3>
+
+            <p>${weatherInfo}</p>
+        </section>
+
+        <section id="hourly-forecast"></section>
+    </article>
 </main>
