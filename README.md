@@ -2,20 +2,6 @@
 
 This project is bootstrapped by [aurelia/new](https://github.com/aurelia/new).
 
-## Start dev web server
+## Hosted at: **https://2apps-aureliajs.netlify.app/#/**
 
-    npm start
-
-## Build the app in production mode
-
-    npm run build
-
-
-## Unit Tests
-
-    npm run test
-
-Run unit tests in watch mode.
-
-    npm run test:watch
-
+## A Todo & Weather App using Aurelia.js
