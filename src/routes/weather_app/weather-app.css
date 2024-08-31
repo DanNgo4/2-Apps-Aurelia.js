@@ -3,6 +3,7 @@ main.weather-app {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
 } 
 
 .weather-app article {
@@ -16,6 +17,7 @@ main.weather-app {
     text-align: center;
     border-radius: 16px;
     padding: 0.75rem 4rem;
+    max-width: 100%;
 }
 
 .weather-app form {
@@ -46,6 +48,7 @@ main.weather-app {
     flex-direction: column;
     align-items: center;
     margin-top: 2rem;
+    width: 100%;
 }
 
 .weather-app img {
@@ -71,4 +74,32 @@ main.weather-app {
 .weather-app #hourly-forecast div {
     min-width: 5rem;
     text-align: center;
+}
+
+@media (max-width: 1024px) {
+    main.weather-app {
+        padding: 6rem;
+    }
+
+    .weather-app h1 {
+        font-size: 1.5rem;
+    }
+
+    .weather-app #hourly-forecast {
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .weather-app .submit {
+        padding: 0.75rem 1rem;
+    }
+
+    .weather-app #hourly-forecast {
+        max-width: 80vw;
+    }
+
+    .weather-app #hourly-forecast div {
+        min-width: 3rem;
+    }
 }
