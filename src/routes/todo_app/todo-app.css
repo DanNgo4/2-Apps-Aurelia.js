@@ -7,221 +7,227 @@ main.todo-app {
 }
   
 .todo-app h1 {
-    text-align: center;
-  }
+  text-align: center;
+}
   
 .todo-app form {
-    text-align: center;
-  }
+  text-align: center;
+}
   
 .todo-app form section {
-    display: flex;
-    flex-direction: row;
-    gap: 4rem;
-    margin-bottom: 2rem;
-  }
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  margin-bottom: 2rem;
+}
   
 .todo-app label {
-    color: var(--charcoal);
-  }
+  color: var(--charcoal);
+}
   
 .todo-app .submit {
-    padding: 1rem 2rem;
-    font-size: 120%;
-  }
+  padding: 1rem 2rem;
+  font-size: 120%;
+}
   
 .todo-app h2 {
-    margin-top: 4rem;
-  }
+  margin-top: 4rem;
+}
   
 .todo-app ul {
-    list-style-type: none;
-  }
+  list-style-type: none;
+}
   
 .todo-app .todo-item {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: baseline;
-    margin-bottom: 1rem;
-  }
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
   
 .todo-app .todo-info {
-    display: grid;
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-  }
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
   
 .todo-app .todo-header {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: center;
-  }
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+}
   
 .todo-app .todo-header h3 {
-    margin: 0;
-  }
+  margin: 0;
+}
   
 .todo-app .todo-description {
-    text-align: left;
-    overflow-wrap: break-word; 
-    white-space: pre-wrap; 
-    overflow: hidden;
-    max-width: 40rem;
-    flex-grow: 0;
-  }
+  text-align: left;
+  overflow-wrap: break-word; 
+  white-space: pre-wrap; 
+  overflow: hidden;
+  max-width: 40rem;
+  flex-grow: 0;
+}
   
 .todo-app .todo-btns {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: end;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: end;
+}
   
 .todo-app .todo-btns button {
-    width: 20%;
-    padding: 0.5rem;
-    border-radius: 16px;
-    border: 2px solid;
-    cursor: pointer;
-  }
+  width: 20%;
+  padding: 0.5rem;
+  border-radius: 16px;
+  border: 2px solid;
+  cursor: pointer;
+}
   
 .todo-app .todo-btns button:hover {
-    color: var(--white);
-    transition: 0.5s;
-  }
+  color: var(--white);
+  transition: 0.5s;
+}
   
 .todo-app .finish {
-    color: var(--primary-green);
-    background-color: var(--light-green);
-  }
+  color: var(--primary-green);
+  background-color: var(--light-green);
+}
   
 .todo-app .finish:hover {
-    background-color: var(--primary-green);
-    border-color: var(--primary-green);
-  }
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+}
   
 .todo-app .remove {
-    color: var(--primary-red);
-    background-color: var(--light-red);
-  }
+  color: var(--primary-red);
+  background-color: var(--light-red);
+}
   
 .todo-app .remove:hover {
-    background-color: var(--primary-red);
-    border-color: var(--primary-red);
-  }
+  background-color: var(--primary-red);
+  border-color: var(--primary-red);
+}
   
 .todo-app .recover {
-    color: var(--primary-blue);
-    background-color: var(--light-blue);
-  }
+  color: var(--primary-blue);
+  background-color: var(--light-blue);
+}
   
 .todo-app .recover:hover {
-    background-color: var(--primary-blue); 
-    border-color: var(--primary-blue);
-  }
+  background-color: var(--primary-blue); 
+  border-color: var(--primary-blue);
+}
   
 .todo-app .pagination {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+}
   
 .todo-app .pagination-links {
-    display: flex;
-    gap: 0.5rem;
-  }
+  display: flex;
+  gap: 0.5rem;
+}
   
 .todo-app .pagination-links a {
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--charcoal);
-    text-decoration: none;
-    color: var(--charcoal);
-    cursor: pointer;
-  }
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--charcoal);
+  text-decoration: none;
+  color: var(--charcoal);
+  cursor: pointer;
+}
   
 .todo-app .pagination-links a.active {
-    background-color: var(--primary-blue);
-    color: var(--white);
-  }
+  background-color: var(--primary-blue);
+  color: var(--white);
+}
   
 .todo-app .pagination-links a:hover:not(.active) {
-    background-color: var(--light-blue);
-  }
+  background-color: var(--light-blue);
+}
   
 .todo-app .pagination-links span {
-    padding: 1rem;
-  }
+  padding: 1rem;
+}
   
 .todo-app .pagination button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border-radius: 32px;
-    border: 2px solid;
-    color: var(--primary-blue);
-    background-color: var(--light-blue);
-    cursor: pointer;
-    width: 6.5rem;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 32px;
+  border: 2px solid;
+  color: var(--primary-blue);
+  background-color: var(--light-blue);
+  cursor: pointer;
+  width: 6.5rem;
+}
   
 .todo-app .pagination button.dis {
-    color: var(--gray);
-    background-color: var(--light-gray);
-    cursor: default;
-  }
+  color: var(--gray);
+  background-color: var(--light-gray);
+  cursor: default;
+}
   
 .todo-app #prev {
-    margin-right: 0.5rem;
-  }
+  margin-right: 0.5rem;
+}
   
 .todo-app #next {
-    margin-left: 0.75rem;
+  margin-left: 0.75rem;
+}
+
+@media (max-width: 1200px) {
+  .todo-app .todo-btns button {
+    width: 30%;
+  }
 }
   
 @media (max-width: 1024px) {
-    main.todo-app {
-      width: 90%;
-    }
+  main.todo-app {
+    width: 90%;
+  }
 
-    .todo-app form section {
-        flex-direction: column;
-        gap: 1rem;
-    }
-  
-    .todo-app .todo-item {
-      grid-template-columns: 1fr;
-      margin-left: -2rem;
-    }
-
-    .todo-app .date {
-      text-align: right;
-    }
-
-    .todo-app .todo-description {
-      margin-top: 0;
-    }
-  
-    .todo-app .todo-btns {
-      flex-direction: row;
-      justify-content: space-between;
-      margin-top: -1rem;
-      margin-bottom: 1rem;
-    }
-
-    .todo-app .todo-btns button {
-      width: 10%;
-    }
-  
-    .todo-app .pagination {
+  .todo-app form section {
       flex-direction: column;
-      align-items: center;
-    }
-  
-    .todo-app .pagination-links {
-      justify-content: center;
-    }
+      gap: 1rem;
+  }
+
+  .todo-app .todo-item {
+    grid-template-columns: 1fr;
+    margin-left: -2rem;
+  }
+
+  .todo-app .date {
+    text-align: right;
+  }
+
+  .todo-app .todo-description {
+    margin-top: 0;
+  }
+
+  .todo-app .todo-btns {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+  }
+
+  .todo-app .todo-btns button {
+    width: 10%;
+  }
+
+  .todo-app .pagination {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .todo-app .pagination-links {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {
